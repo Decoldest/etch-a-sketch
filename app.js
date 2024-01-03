@@ -13,17 +13,16 @@ function displayDimensions(){
   currDimensionDisplay.textContent = gridDimension + " X " + gridDimension;
 }
 
-dimensionSlider.oninput = function(){
-  gridDimension = this.value;
-  displayDimensions();
+dimensionSlider.oninput = () => { 
+  gridDimension = dimensionSlider.value; 
+  displayDimensions(); 
 }
 
-window.addEventListener('mouseup', () =>{
-  if(isClick) isClick = !isClick;
-});
+window.addEventListener('mouseup', () => { if(isClick) isClick = !isClick; });
 
 function setPixels(screenDimension, gridDimension) {
   const fragment = document.createDocumentFragment();
+  display.innerHTML = '';
 
   for (let i = gridDimension * gridDimension; i > 0; i--) {
     const pixel = document.createElement('div');
@@ -33,30 +32,30 @@ function setPixels(screenDimension, gridDimension) {
 
     fragment.appendChild(pixel);
   }
-  display.innerHTML = '';
+
   display.appendChild(fragment);
   addPixelListener(pixelColor);
 }
 
-function addPixelListener(pixelColor){
+function addPixelListener(pixelColor) {
   const drawnPixels = Array.from(document.querySelectorAll('div.pixel'));
+
   for (const pixel of drawnPixels) {
     pixel.addEventListener('mouseenter', () => {
-      if (isClick){
-        if (pixelColor === 'rainbow'){
+      if (isClick) {
+        if (pixelColor === 'rainbow') {
           pixel.style.backgroundColor = randomColor();
-        }
-        else{
+        } else {
           pixel.style.backgroundColor = pixelColor;
         }
       }
     });
+
     pixel.addEventListener('mousedown', () => {
       isClick = true;
-      if (pixelColor === 'rainbow'){
+      if (pixelColor === 'rainbow') {
         pixel.style.backgroundColor = randomColor();
-      }
-      else{
+      } else {
         pixel.style.backgroundColor = pixelColor;
       }
     });
@@ -84,7 +83,6 @@ setDimensionButton.addEventListener('click', () => {
   display.innerHTML = "";
   setPixels(screenDimension, gridDimension);
 });
-
 
 setPixels(screenDimension, gridDimension);
 displayDimensions();
