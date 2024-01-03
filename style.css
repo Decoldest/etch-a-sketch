@@ -1,0 +1,14 @@
+.pixel-container {
+  border: red solid;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  width: 75vh;
+  height: 75vh;
+}
+
+
+div {
+  margin: 0px;
+  padding: 0px;
+}
