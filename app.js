@@ -28,7 +28,6 @@ function setPixels(screenDimension, gridDimension) {
     pixel.classList.add('pixel');
     pixel.style.width = screenDimension / gridDimension + 'px';
     pixel.style.height = screenDimension / gridDimension + 'px';
-    pixel.style.outline = '1px solid gainsboro';
     
     fragment.appendChild(pixel);
   }
