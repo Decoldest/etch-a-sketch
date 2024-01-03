@@ -5,17 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
+    <link rel="icon" type="image/x-icon" href="art.png">
     <title>Etch-a-Sketch</title>
   </head>
   <body>
     <div id="content-container">
       <div class="button-container">
-        <button>One</button>
-        <button>Two</button>
+        <button id="eraser">Erase</button>
+        <button id="add">Add</button>
         <button>Three</button>
+        <div class="slidecontainer">
+          <input type="range" min="1" max="100" value="16" class="slider" id="gridDimension">
+        </div>
       </div>
       <div class="pixel-container">
       </div>
     </div>
+    <div class="counter">0</div>
   </body>
   </html>
