@@ -10,7 +10,7 @@ h2 {
 #content-container {
   display: flex;
   padding-top: 5vh;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .button-container {
@@ -25,16 +25,22 @@ h2 {
   box-sizing: border-box;
   background: #ecf0f3;
   justify-self: flex-start;
+  margin-left: 4%;
 }
 
 .pixel-container {
+  margin: auto;
   display: flex;
   flex-wrap: wrap;
   width: 76vh;
   height: 76vh;
-  box-shadow: 4px 4px 50px rgb(36, 36, 36);
   background: white;
 }
+
+.pixel {
+  box-sizing: border-box;
+}
+
 
 div {
   margin: 0px;

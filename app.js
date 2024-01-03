@@ -1,9 +1,12 @@
+const DEFAULT_COLOR = 'black'
+const DEFAULT_SIZE = 16
+
 const display = document.querySelector('.pixel-container');
 const dimensionSlider = document.getElementById('gridDimension');
 const currDimensionDisplay = document.getElementById('currentDimension');
-const screenDimension = display.clientHeight;
-let gridDimension = 16;
-let pixelColor = 'black';
+const screenDimension = display.clientWidth;
+let gridDimension = DEFAULT_SIZE;
+let pixelColor = DEFAULT_COLOR;
 let isClick = false;
 
 function displayDimensions(){
@@ -23,14 +26,14 @@ function setPixels(screenDimension, gridDimension) {
   const fragment = document.createDocumentFragment();
 
   for (let i = gridDimension * gridDimension; i > 0; i--) {
-    
     const pixel = document.createElement('div');
     pixel.classList.add('pixel');
-    pixel.style.width = screenDimension / gridDimension + 'px';
-    pixel.style.height = screenDimension / gridDimension + 'px';
-    
+    pixel.style.width = (screenDimension / gridDimension) + 'px';
+    pixel.style.height = (screenDimension / gridDimension) + 'px';
+
     fragment.appendChild(pixel);
   }
+  display.innerHTML = '';
   display.appendChild(fragment);
   addPixelListener(pixelColor);
 }
