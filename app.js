@@ -67,26 +67,20 @@ function randomColor(){
   return "#" + ((1 << 24) * Math.random() | 0).toString(16).padStart(6, "0");
 }
 
-const eraserButton = document.querySelector('#eraser');
-eraserButton.addEventListener('click', () => {
-  pixelColor = 'white';
-  addPixelListener(pixelColor);
-});
+function setupButtonListener(buttonId, color) {
+  const button = document.querySelector(buttonId);
+  button.addEventListener('click', () => {
+    pixelColor = color;
+    addPixelListener(pixelColor);
+  });
+}
 
-const pencilButton = document.querySelector('#pencil');
-pencilButton.addEventListener('click', () => {
-  pixelColor = 'black';
-  addPixelListener(pixelColor);
-});
-
-const ranbowButton = document.querySelector('#rainbow');
-ranbowButton.addEventListener('click', () => {
-  pixelColor = 'rainbow';
-  addPixelListener(pixelColor);
-});
+setupButtonListener('#eraser', 'white');
+setupButtonListener('#pencil', 'black');
+setupButtonListener('#rainbow', 'rainbow');
 
 const setDimensionButton = document.getElementById('resetDimension');
-setDimensionButton.addEventListener('click', () =>{
+setDimensionButton.addEventListener('click', () => {
   display.innerHTML = "";
   setPixels(screenDimension, gridDimension);
 });
