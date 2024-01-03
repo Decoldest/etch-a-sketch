@@ -1,14 +1,24 @@
+#content-container {
+  display: flex;
+  padding-top: 5vh;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .pixel-container {
-  border: red solid;
+  outline: red solid;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
-  width: 75vh;
-  height: 75vh;
+  width: 76vh;
+  height: 76vh;
 }
-
 
 div {
   margin: 0px;
   padding: 0px;
+  box-sizing: border-box;
 }
