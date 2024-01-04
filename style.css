@@ -21,6 +21,7 @@ h2 {
   justify-content: space-evenly;
   align-items: center;
   border-radius: 20px;
+  box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
   position: relative;
   box-sizing: border-box;
   background: #ecf0f3;
@@ -42,8 +43,6 @@ h2 {
   box-sizing: border-box;
   flex: left;
 }
-
-
 div {
   margin: 0px;
   padding: 0px;
