@@ -42,6 +42,8 @@ h2 {
 .pixel {
   box-sizing: border-box;
   flex: left;
+  margin: 0;
+  padding: 0;
 }
 div {
   margin: 0px;

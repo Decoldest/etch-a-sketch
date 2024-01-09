@@ -23,13 +23,13 @@ window.addEventListener('mouseup', () => { if(isClick) isClick = !isClick; });
 function setPixels(screenDimension, gridDimension) {
   const fragment = document.createDocumentFragment();
   display.innerHTML = '';
-
+  let pixelDimension = Math.floor((screenDimension / gridDimension) * 10)/10; 
+  
   for (let i = gridDimension * gridDimension; i > 0; i--) {
     const pixel = document.createElement('div');
     pixel.classList.add('pixel');
-    pixel.style.width = (screenDimension / gridDimension) + 'px';
-    pixel.style.height = (screenDimension / gridDimension) + 'px';
-
+    pixel.style.width = pixelDimension + 'px';
+    pixel.style.height = pixelDimension + 'px';
     fragment.appendChild(pixel);
   }
 
