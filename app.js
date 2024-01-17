@@ -3,7 +3,6 @@ const DEFAULTS = {
   SIZE: 16
 };
 
-
 const display = document.querySelector('.pixel-container');
 const dimensionSlider = document.getElementById('gridDimension');
 const currDimensionDisplay = document.getElementById('currentDimension');
@@ -12,7 +11,7 @@ let pixelColor = DEFAULTS.COLOR;
 let isClick = false;
 
 function displayDimensions(){
-  currDimensionDisplay.textContent = gridDimension + " X " + gridDimension;
+  currDimensionDisplay.textContent = `${gridDimension} X ${gridDimension}`;
 }
 
 dimensionSlider.oninput = () => { 
@@ -20,7 +19,9 @@ dimensionSlider.oninput = () => {
   displayDimensions(); 
 }
 
-window.addEventListener('mouseup', () => { if(isClick) isClick = !isClick; });
+window.addEventListener('mouseup', () => { 
+  if(isClick) isClick = false; 
+});
 
 function setPixels(gridDimension) {
   display.innerHTML = '';
@@ -78,5 +79,8 @@ setDimensionButton.addEventListener('click', () => {
   setPixels(gridDimension);
 });
 
-setPixels(gridDimension);
-displayDimensions();
+window.onload = function() {
+  setPixels(gridDimension);
+  displayDimensions();
+};
+
