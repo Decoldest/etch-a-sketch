@@ -29,7 +29,6 @@ function setPixels(gridDimension) {
   
   for (let i = gridDimension * gridDimension; i > 0; i--) {
     display.appendChild(createPixel());
-
   }
 }
 
@@ -65,7 +64,6 @@ function setupButtonListener(buttonId, color) {
   const button = document.querySelector(buttonId);
   button.addEventListener('click', () => {
     pixelColor = color;
-    addPixelListener(pixelColor);
   });
 }
 
