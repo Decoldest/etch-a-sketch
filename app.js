@@ -1,11 +1,14 @@
-const DEFAULT_COLOR = 'black'
-const DEFAULT_SIZE = 16
+const DEFAULTS = {
+  COLOR: 'black',
+  SIZE: 16
+};
+
 
 const display = document.querySelector('.pixel-container');
 const dimensionSlider = document.getElementById('gridDimension');
 const currDimensionDisplay = document.getElementById('currentDimension');
-let gridDimension = DEFAULT_SIZE;
-let pixelColor = DEFAULT_COLOR;
+let gridDimension = DEFAULTS.SIZE;
+let pixelColor = DEFAULTS.COLOR;
 let isClick = false;
 
 function displayDimensions(){
@@ -21,8 +24,7 @@ window.addEventListener('mouseup', () => { if(isClick) isClick = !isClick; });
 
 function setPixels(gridDimension) {
   display.innerHTML = '';
-  display.style.gridTemplateColumns = `repeat(${gridDimension}, 1fr)`;
-  display.style.gridTemplateRows = `repeat(${gridDimension}, 1fr)`;
+  setGridPixels();
   
   for (let i = gridDimension * gridDimension; i > 0; i--) {
     const pixel = document.createElement('div');
@@ -31,6 +33,19 @@ function setPixels(gridDimension) {
   }
 
   addPixelListener(pixelColor);
+}
+
+function setGridPixels() {
+  display.style.gridTemplateColumns = `repeat(${gridDimension}, 1fr)`;
+  display.style.gridTemplateRows = `repeat(${gridDimension}, 1fr)`;
+}
+
+function createPixel() {
+  const pixel = document.createElement('div');
+  pixel.classList.add('pixel');
+  pixel.addEventListener('mouseenter', () => handlePixelMouseEnter(pixel));
+  pixel.addEventListener('mousedown', () => handlePixelMouseDown(pixel));
+  return pixel;
 }
 
 function addPixelListener(pixelColor) {
@@ -60,6 +75,21 @@ function addPixelListener(pixelColor) {
 
 function randomColor(){
   return "#" + ((1 << 24) * Math.random() | 0).toString(16).padStart(6, "0");
+}
+
+function handleMouseUp() {
+  if (isClick) isClick = !isClick;
+}
+
+function handlePixelMouseEnter(pixel) {
+  if (isClick) {
+    pixel.style.backgroundColor = (pixelColor === 'rainbow') ? randomColor() : pixelColor;
+  }
+}
+
+function handlePixelMouseDown(pixel) {
+  isClick = true;
+  pixel.style.backgroundColor = (pixelColor === 'rainbow') ? randomColor() : pixelColor;
 }
 
 function setupButtonListener(buttonId, color) {
