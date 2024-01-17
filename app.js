@@ -27,12 +27,9 @@ function setPixels(gridDimension) {
   setGridPixels();
   
   for (let i = gridDimension * gridDimension; i > 0; i--) {
-    const pixel = document.createElement('div');
-    pixel.classList.add('pixel');
-    display.appendChild(pixel);
-  }
+    display.appendChild(createPixel());
 
-  addPixelListener(pixelColor);
+  }
 }
 
 function setGridPixels() {
@@ -48,37 +45,8 @@ function createPixel() {
   return pixel;
 }
 
-function addPixelListener(pixelColor) {
-  const drawnPixels = Array.from(document.querySelectorAll('div.pixel'));
-
-  for (const pixel of drawnPixels) {
-    pixel.addEventListener('mouseenter', () => {
-      if (isClick) {
-        if (pixelColor === 'rainbow') {
-          pixel.style.backgroundColor = randomColor();
-        } else {
-          pixel.style.backgroundColor = pixelColor;
-        }
-      }
-    });
-
-    pixel.addEventListener('mousedown', () => {
-      isClick = true;
-      if (pixelColor === 'rainbow') {
-        pixel.style.backgroundColor = randomColor();
-      } else {
-        pixel.style.backgroundColor = pixelColor;
-      }
-    });
-  }
-}
-
 function randomColor(){
   return "#" + ((1 << 24) * Math.random() | 0).toString(16).padStart(6, "0");
-}
-
-function handleMouseUp() {
-  if (isClick) isClick = !isClick;
 }
 
 function handlePixelMouseEnter(pixel) {
