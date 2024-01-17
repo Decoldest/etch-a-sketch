@@ -4,7 +4,6 @@ const DEFAULT_SIZE = 16
 const display = document.querySelector('.pixel-container');
 const dimensionSlider = document.getElementById('gridDimension');
 const currDimensionDisplay = document.getElementById('currentDimension');
-const screenDimension = display.clientWidth;
 let gridDimension = DEFAULT_SIZE;
 let pixelColor = DEFAULT_COLOR;
 let isClick = false;
@@ -20,20 +19,17 @@ dimensionSlider.oninput = () => {
 
 window.addEventListener('mouseup', () => { if(isClick) isClick = !isClick; });
 
-function setPixels(screenDimension, gridDimension) {
-  const fragment = document.createDocumentFragment();
+function setPixels(gridDimension) {
   display.innerHTML = '';
-  let pixelDimension = Math.floor((screenDimension / gridDimension) * 10)/10; 
+  display.style.gridTemplateColumns = `repeat(${gridDimension}, 1fr)`;
+  display.style.gridTemplateRows = `repeat(${gridDimension}, 1fr)`;
   
   for (let i = gridDimension * gridDimension; i > 0; i--) {
     const pixel = document.createElement('div');
     pixel.classList.add('pixel');
-    pixel.style.width = pixelDimension + 'px';
-    pixel.style.height = pixelDimension + 'px';
-    fragment.appendChild(pixel);
+    display.appendChild(pixel);
   }
 
-  display.appendChild(fragment);
   addPixelListener(pixelColor);
 }
 
@@ -81,8 +77,8 @@ setupButtonListener('#rainbow', 'rainbow');
 const setDimensionButton = document.getElementById('resetDimension');
 setDimensionButton.addEventListener('click', () => {
   display.innerHTML = "";
-  setPixels(screenDimension, gridDimension);
+  setPixels(gridDimension);
 });
 
-setPixels(screenDimension, gridDimension);
+setPixels(gridDimension);
 displayDimensions();

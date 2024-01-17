@@ -31,8 +31,7 @@ h2 {
 
 .pixel-container {
   margin: auto;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   width: 76vh;
   height: 76vh;
   background: white;
